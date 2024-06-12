@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input[type='text'],
+input[type='number'],
+select,
+textarea {
+  @apply w-full border p-2 rounded;
+}
+label {
+  @apply text-xs text-gray-600 font-bold  block mt-6;
+}
+
+label.upload-btn input[type='file'] {
+  @apply hidden;
+}
