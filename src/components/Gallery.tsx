@@ -8,7 +8,6 @@ import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
-import MyImage from './MyImage';
 
 export default function Gallery({ files }: { files: UploadResponse[] }) {
   const [activeFile, setActiveFile] = useState<UploadResponse | null>(
@@ -34,18 +33,7 @@ export default function Gallery({ files }: { files: UploadResponse[] }) {
   }
   return (
     <>
-      {activeFile && (
-        <div className="absolute inset-0 overflow-hidden">
-          <MyImage
-            src={activeFile.filePath}
-            alt={'bg'}
-            width={2048}
-            height={2048}
-            className="object-cover opacity-20 blur w-full h-full"
-          />
-        </div>
-      )}
-      <div className="grow flex items-center relative">
+      <div className="grow flex items-center relative shadow-md">
         {activeFile && (
           <>
             <div className="absolute inset-4 flex items-center justify-center">
@@ -74,7 +62,7 @@ export default function Gallery({ files }: { files: UploadResponse[] }) {
         {files.map((file) => (
           <div
             key={file.fileId}
-            className="size-14 cursor-pointer rounded overflow-hidden"
+            className="size-14 cursor-pointer rounded overflow-hidden border"
           >
             <UploadThumbnail onClick={() => setActiveFile(file)} file={file} />
           </div>

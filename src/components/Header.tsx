@@ -49,7 +49,7 @@ export const Header = ({ session }: { session: Session | null }) => {
                         Profile
                       </button>
                     </Link>
-                    <Link href="/my-ads">
+                    <Link href="/my-ads" onClick={() => setDropDown(false)}>
                       <button className="p-1 text-black block text-center w-full">
                         My adds
                       </button>

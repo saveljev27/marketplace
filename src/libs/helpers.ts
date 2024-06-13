@@ -15,3 +15,17 @@ export const categories: Record<string, string> = {
   hobbies: 'Hobbies',
   classifields: 'Classifields',
 };
+
+export const conditions: Record<string, string> = {
+  new: 'New',
+  usedLikenew: 'Used - Like New',
+  usedGood: 'Used - Good',
+  usedFair: 'Used - Fair',
+};
+
+export function formatMoney(amount: number): string {
+  return Intl.NumberFormat('de-DE', {
+    style: 'currency',
+    currency: 'EUR',
+  }).format(amount);
+}

@@ -15,3 +15,7 @@ label {
 label.upload-btn input[type='file'] {
   @apply hidden;
 }
+
+.page__title {
+  @apply font-bold text-lg mt-3 mb-6;
+}
