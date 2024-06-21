@@ -6,21 +6,24 @@ import { ProductAdModel } from '@/models/ProductAd';
 import { revalidatePath } from 'next/cache';
 
 export async function createAd(formData: FormData) {
-  const { files, ...data } = Object.fromEntries(formData);
+  const { files, adType, ...data } = Object.fromEntries(formData);
   const session = await auth();
+  console.log(adType);
   await connect();
 
   const adDoc = {
     ...data,
+    adType: adType as string,
     files: JSON.parse(files as string),
     userEmail: session?.user?.email,
   };
+
   const newAdd = await ProductAdModel.create(adDoc);
   return JSON.parse(JSON.stringify(newAdd));
 }
 
 export async function updateAd(formData: FormData) {
-  const { _id, files, ...data } = Object.fromEntries(formData);
+  const { _id, files, adType, ...data } = Object.fromEntries(formData);
   const session = await auth();
   await connect();
   const findAd = await ProductAdModel.findById(_id);

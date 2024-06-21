@@ -2,20 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
+.wrapper {
+  @apply flex flex-col min-h-screen;
+}
+/* Inputs and labels */
 input[type='text'],
 input[type='number'],
 select,
 textarea {
   @apply w-full border p-2 rounded;
 }
+textarea {
+  @apply h-60;
+}
 label {
-  @apply text-xs text-gray-600 font-bold  block mt-6;
+  @apply text-sm text-gray-600 font-bold  block mt-6;
 }
 
 label.upload-btn input[type='file'] {
   @apply hidden;
 }
 
+label.radio-btn {
+  @apply has-[:checked]:bg-blue-100 rounded-md py-1 px-1 flex items-center gap-2 my-0;
+}
+label.radio-btn span.icon {
+  @apply size-8 rounded-full flex items-center justify-center text-gray-500;
+}
+label.radio-btn svg {
+  @apply h-4;
+}
+label.radio-btn {
+  @apply normal-case;
+}
+
+/* Page title */
 .page__title {
   @apply font-bold text-lg mt-3 mb-6;
+}
+
+/* Buttons */
+.outline_btn {
+  @apply border bg-gray-500 text-white rounded-md py-2 px-4 transition hover:bg-opacity-85;
+}
+.main_btn {
+  @apply bg-blue-500 text-white rounded-md py-2 px-4 transition hover:bg-opacity-85;
+}
+.pending_btn {
+  @apply bg-gray-500 text-white rounded-md py-2 px-4 transition;
+}
+.edit_btn {
+  @apply border border-blue-500 py-1 px-4 rounded-md hover:opacity-85;
+}
+.delete_btn {
+  @apply border border-red-500 py-1 px-4 rounded-md  hover:opacity-85;
+}
+
+/* Footer */
+.footer__links {
+  @apply w-full flex justify-evenly flex-wrap max-md:mt-10 gap-20;
+}
+.footer__link {
+  @apply flex flex-col gap-6 text-base min-w-[170px];
+}
+.footer__copyrights {
+  @apply flex justify-between items-center flex-wrap mt-10 border-t border-gray-100 sm:px-16 px-6 py-10;
+}
+.footer__copyrights-link {
+  @apply flex-1 flex sm:justify-end justify-center max-sm:mt-4 gap-10;
+}
+
+/* Alert */
+.alert {
+  @apply text-white bg-red-500 py-2 px-5 rounded-md;
 }

@@ -1,5 +1,5 @@
 'use client';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faShop } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SignIn } from './SignIn';
 import { SignOut } from './SignOut';
@@ -13,12 +13,15 @@ export const Header = ({ session }: { session: Session | null }) => {
 
   return (
     <header className="flex justify-between px-6 border h-16 items-center">
-      <Link href="/">
-        <span className="text-2x1 font-bold text-blue-500">MarketPlace</span>
+      <Link href="/" className="hover:opacity-85">
+        <span className="text-2x1 font-bold text-blue-500 inline-flex gap-2 leading-3  items-center">
+          <FontAwesomeIcon icon={faShop} className="h-4" />
+          MarketPlace
+        </span>
       </Link>
-      <nav className="flex gap-6 items-center">
+      <nav className="flex gap-4 items-center">
         <Link href="/new">
-          <span className="mr-2 bg-blue-500 text-white rounded-md py-1 px-4 inline-flex items-center gap-2">
+          <span className="mr-2 main_btn inline-flex items-center gap-2">
             <FontAwesomeIcon icon={faPlus} className="h-4" />
             Create New Add
           </span>

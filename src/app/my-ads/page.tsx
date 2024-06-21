@@ -1,16 +1,22 @@
 'use server';
 
 import { auth } from '@/auth';
-import AdElement from '@/components/AdElement';
+import AdElement from '@/components/Ad/AdElement';
 import { connect } from '@/libs/helpers';
 import { ProductAd, ProductAdModel } from '@/models/ProductAd';
 
 export default async function page() {
   const session = await auth();
   await connect();
-  const findUserAds = await ProductAdModel.find({
-    userEmail: session?.user?.email,
-  });
+  const findUserAds = await ProductAdModel.find(
+    {
+      userEmail: session?.user?.email,
+    },
+    null,
+    {
+      sort: { createdAt: -1 },
+    }
+  );
   const adDoc: ProductAd[] = JSON.parse(JSON.stringify(findUserAds));
 
   return (

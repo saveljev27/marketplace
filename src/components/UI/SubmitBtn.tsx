@@ -6,10 +6,7 @@ export default function SubmitBtn({ children }: { children: ReactNode }) {
   return (
     <button
       disabled={pending}
-      className={
-        (pending ? 'bg-gray-400' : ' bg-blue-500') +
-        ' py-2 px-8 mt-2 rounded-md text-white '
-      }
+      className={(pending ? 'pending_btn' : 'main_btn') + ' py-2 px-8 mt-2'}
     >
       {pending && <span>Saving...</span>}
       {!pending && <span>{children}</span>}

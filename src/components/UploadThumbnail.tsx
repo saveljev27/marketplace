@@ -13,7 +13,6 @@ export default function UploadThumbnail({ file, onClick }: Props) {
       ev.preventDefault();
       return onClick();
     }
-    location.href = file.url;
   }
   if (file.fileType === 'image') {
     return (
@@ -24,6 +23,7 @@ export default function UploadThumbnail({ file, onClick }: Props) {
           height={300}
           aiCrop={true}
           src={file.filePath}
+          className="hover:opacity-85"
         />
       </a>
     );

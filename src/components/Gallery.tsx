@@ -33,7 +33,7 @@ export default function Gallery({ files }: { files: UploadResponse[] }) {
   }
   return (
     <>
-      <div className="grow flex items-center relative shadow-md">
+      <div className="grow flex items-center relative">
         {activeFile && (
           <>
             <div className="absolute inset-4 flex items-center justify-center">

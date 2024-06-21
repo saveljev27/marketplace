@@ -1,7 +1,7 @@
 'use server';
 
 import { auth } from '@/auth';
-import AdForm from '@/components/AdForm';
+import AdForm from '@/components/Ad/AdForm';
 import { connect } from '@/libs/helpers';
 import { ProductAdModel } from '@/models/ProductAd';
 
@@ -29,7 +29,12 @@ export default async function EditPage(props: Props) {
   return (
     <div className="w-3/4 mx-auto">
       <h1 className="page__title">Edit Ad</h1>
-      <AdForm defaultFiles={adDoc.files} defaultText={adDoc} id={id} />
+      <AdForm
+        defaultFiles={adDoc.files}
+        defaultText={adDoc}
+        id={id}
+        type={adDoc.adType}
+      />
     </div>
   );
 }

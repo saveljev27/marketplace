@@ -4,7 +4,7 @@ import { categories, conditions } from '@/libs/helpers';
 import Options from '../Options';
 import { useState } from 'react';
 
-export type AdInputText = {
+export type ProductInputText = {
   title?: string;
   price?: number;
   category?: string;
@@ -14,7 +14,7 @@ export type AdInputText = {
 };
 
 type Props = {
-  defaultValue: AdInputText;
+  defaultValue: ProductInputText;
 };
 
 export default function ProductInputs({ defaultValue }: Props) {
@@ -22,7 +22,6 @@ export default function ProductInputs({ defaultValue }: Props) {
 
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let { value } = e.target;
-    console.log(value);
     value = value.replace(',', '.');
     const regex = /^\d*\.?\d{0,2}$/;
     if (regex.test(value)) {
@@ -32,21 +31,27 @@ export default function ProductInputs({ defaultValue }: Props) {
 
   return (
     <>
-      <label htmlFor="title">Title</label>
+      <label htmlFor="title">
+        Title <span className="text-red-500">*</span>
+      </label>
       <input
         type="text"
         name="title"
         placeholder="Title"
         defaultValue={defaultValue.title}
+        required
       />
 
-      <label htmlFor="price">Price</label>
+      <label htmlFor="price">
+        Price (use dot) <span className="text-red-500">*</span>
+      </label>
       <input
         type="number"
         name="price"
         placeholder="Price"
         value={price}
         onChange={handlePriceChange}
+        required
       />
 
       <Options
@@ -54,6 +59,7 @@ export default function ProductInputs({ defaultValue }: Props) {
         options={categories}
         name="category"
         defaultVal={defaultValue.category}
+        required={true}
       />
 
       <Options
@@ -61,22 +67,27 @@ export default function ProductInputs({ defaultValue }: Props) {
         options={conditions}
         name="condition"
         defaultVal={defaultValue.condition}
+        required={true}
       />
 
       <label htmlFor="description">Description</label>
       <textarea
         name="description"
         id="description"
-        placeholder="Description"
+        placeholder="Description (max 2000 characters)"
+        maxLength={2000}
         defaultValue={defaultValue.description}
       ></textarea>
 
-      <label htmlFor="contact">Contacts</label>
+      <label htmlFor="contact">
+        Contacts <span className="text-red-500">*</span>
+      </label>
       <input
         type="text"
         name="contact"
         placeholder="Contact"
         defaultValue={defaultValue.contact}
+        required
       />
     </>
   );

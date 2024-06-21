@@ -6,6 +6,7 @@ type OptionsProps = {
   label: string;
   name: string;
   defaultVal?: string | number;
+  required?: boolean;
 };
 
 export default function Options({
@@ -16,11 +17,20 @@ export default function Options({
   label,
   name,
   defaultVal = '0',
+  required,
 }: OptionsProps) {
   return (
     <>
-      <label htmlFor={name}>{label}</label>
-      <select onClick={onClick} name={name} id={name} defaultValue={defaultVal}>
+      <label htmlFor={name}>
+        {label} {required && <span className="text-red-500">*</span>}
+      </label>
+      <select
+        onClick={onClick}
+        name={name}
+        id={name}
+        defaultValue={defaultVal}
+        required={required}
+      >
         <option disabled={disabled} value="">
           {children}
         </option>

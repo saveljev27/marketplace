@@ -1,5 +1,7 @@
 'use client';
 
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -22,24 +24,21 @@ export default function DeleteAdBtn({ id }: { id: string }) {
           className="border bg-red-500 text-white py-1 px-4 rounded-md"
           onClick={handleDelete}
         >
-          Are you sure?
+          Delete
         </button>
         <button
           className="border bg-green-500 text-white py-1 px-4 rounded-md"
           onClick={() => setShowDeleteAlert(false)}
         >
-          No
+          Cancel
         </button>
       </div>
     );
   }
 
   return (
-    <button
-      onClick={() => setShowDeleteAlert(true)}
-      className="border border-red-500 py-1 px-4 rounded-md"
-    >
-      Delete
+    <button onClick={() => setShowDeleteAlert(true)} className="delete_btn">
+      <FontAwesomeIcon icon={faTrash} className="text-red-500" />
     </button>
   );
 }

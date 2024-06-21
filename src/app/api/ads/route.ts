@@ -7,8 +7,10 @@ export async function GET(req: Request, res: Response) {
   await connect();
   const { searchParams } = new URL(req.url);
   const searchQuery = searchParams.get('search');
+  const typeQuery = searchParams.get('type');
   const categoryQuery = searchParams.get('category');
   const conditionQuery = searchParams.get('condition');
+  const bodystyleQuery = searchParams.get('bodystyle');
   const min = searchParams.get('min');
   const max = searchParams.get('max');
 
@@ -17,6 +19,9 @@ export async function GET(req: Request, res: Response) {
   if (searchQuery) {
     filter.title = { $regex: '.*' + searchQuery + '.*', $options: 'i' };
   }
+  if (typeQuery) {
+    filter.adType = typeQuery;
+  }
 
   if (categoryQuery) {
     filter.category = categoryQuery;
@@ -24,6 +29,10 @@ export async function GET(req: Request, res: Response) {
 
   if (conditionQuery) {
     filter.condition = conditionQuery;
+  }
+
+  if (bodystyleQuery) {
+    filter.bodystyle = bodystyleQuery;
   }
 
   if (min && !max) filter.price = { $gte: min };
